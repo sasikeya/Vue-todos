@@ -3,7 +3,7 @@
 > A Vue.js TODOS
 
 ##  demo
-![image](https://github.com/sasikeya/vue-todos/src/assets/todos.png)
+![image](https://github.com/sasikeya/Vue-todos/blob/master/src/assets/todos.png)
 
 ## Build Setup
 
