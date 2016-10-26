@@ -2,11 +2,17 @@
     <div id="app">
       <h1>todos</h1>
       <ul class="list">
-          <li v-for="(item, index) in lists"><listcard :index = "index" :lists.sync = "lists"></listcard></li>
+          <listcard class = "listcard"
+                  :index = "index"
+                  :item = "item"
+                  :lists = lists
+                  v-for= "(item, index) in lists"
+                  @del= "update">
+                  </listcrd>
       </ul>
       <div class="add-box">
           <button class="add-btn" @click= "add">＋</button>
-          <button class="cancel-btn" @click= "del">-</button>
+          <button class="cancel-btn">-</button>
       </div>
     </div>
 </template>
@@ -35,8 +41,8 @@ export default {
             let id = this.lists.length;
             this.lists.push({id});
         },
-        del: function(id) {
-            this.lists.splice(id,1);
+        update: function(todos){
+            this.lists = todos;
         }
     }
 }
@@ -50,6 +56,8 @@ html {
 h1 {
     text-align: center;
     width: 100%;
+    font: 70px 'Helvetica Neue';
+    font-weight: 100;
   }
 body {
     font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -67,8 +75,8 @@ ul {
     padding: 0px;
     margin-left: 22px;
 }
-li {
-  float: left;
+.listcard {
+    float: left;
 }
 #app {
   height: 100%;

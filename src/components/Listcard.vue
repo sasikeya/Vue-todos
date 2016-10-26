@@ -5,8 +5,8 @@
               <p class="filter"></p>
           </div>
           <div class="text-input">
-              <textarea v-model="title" v-show="textModel"></textarea>
-              <label v-show= "!textModel">{{ title }}</label>
+              <textarea v-model="item.text" v-show="textModel"></textarea>
+              <label v-show= "!textModel">{{ item.text }}</label>
           </div>
           <div class="footer">
               <button class="del-btn" @click="del">删除</button>
@@ -19,21 +19,19 @@
 <script>
 export default {
   props: [
+      'lists',
       'index',
-      'lists'
+      'item'
   ],
   data() {
       let todos = JSON.parse(localStorage.getItem('todos-vue') || '[]');
       let textModel = true;
-      let title = '';
       if (todos[this.index]) {
-        title = todos[this.index].text;
         textModel = false;
       }
       return {
         name: 'listcard',
         textModel: textModel,
-        title: title,
         todos: todos
       }
   },
@@ -41,18 +39,19 @@ export default {
       save: function() {
           this.textModel = false;
           let todo = {
-            text: this.title
+            text: this.item.text
           };
-          this.todos[this.index] = todo;
+          this.todos.splice(this.index, 1, todo);
           localStorage.setItem('todos-vue', JSON.stringify(this.todos));
       },
       edit: function() {
           this.textModel = true;
-          console.log(this.lists);
       },
       del: function() {
-       this.lists.splice(this.index,1);
-        console.log(this.lists);
+          this.todos = JSON.parse(localStorage.getItem('todos-vue') || '[]');
+          this.todos.splice(this.index,1);
+          this.$emit('del', this.todos);
+          localStorage.setItem('todos-vue', JSON.stringify(this.todos));
       }
   }
 }
