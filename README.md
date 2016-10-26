@@ -1,6 +1,8 @@
-# my-project
+# Vue-todos
 
-> A Vue.js project
+> A Vue.js TODOS
+# demo
+![image](https://github.com/sasikeya/my-project/src/assets/todos.png)
 
 ## Build Setup
 
