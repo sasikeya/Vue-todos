@@ -3,11 +3,11 @@
 > A Vue.js TODOS
 
 ##  demo
-![image](https://github.com/sasikeya/my-project/src/assets/todos.png)
+![image](https://github.com/sasikeya/vue-todos/src/assets/todos.png)
 
 ## Build Setup
 
-``` bash
+``` bashvue-todos
 # install dependencies
 npm install
 
